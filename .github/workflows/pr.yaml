@@ -19,6 +19,6 @@ jobs:
         run: |
           if [[ "$GITHUB_HEAD_REF" != 'dev' ]]
           then
-            echo "error title=Policy violation::Only the dev branch is allowed to PR to the prod branch."
+            echo "::error title=Policy violation::Only the dev branch is allowed to PR to the prod branch."
             exit 1
           fi
