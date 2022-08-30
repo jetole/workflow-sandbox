@@ -6,7 +6,7 @@ on:
 
 jobs:
   init:
-    name: Init steps
+    name: PR steps
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'pull_request' }}
 
