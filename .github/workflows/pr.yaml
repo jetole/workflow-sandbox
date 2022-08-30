@@ -17,4 +17,8 @@ jobs:
       - name: Verify dev PR to prod
         if: ${{ github.base_ref == 'prod' }}
         run: |
-          [[ "$GITHUB_HEAD_REF" == 'dev' ]] || false
+          if [[ "$GITHUB_HEAD_REF" != 'dev' ]]
+          then
+            echo "ERROR: Only PR's from dev branch are allowed." `>&2
+            exit 1
+          fi
