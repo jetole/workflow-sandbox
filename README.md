@@ -1,5 +1,14 @@
 # workflow-sandbox
 
- This is where I am testing workflow stuff.
+The following code will make sure that a PR to prod from a branch other than dev will fail. This will only apply if `github.event_name` is `pull_request` (`on: pull_request`).
 
-Tue 30 Aug 2022 03:56:27 PM EDT
+```
+- name: Verify dev PR to prod
+  if: ${{ github.base_ref == 'prod' }}
+  run: |
+    if [[ "$GITHUB_HEAD_REF" != 'dev' ]]
+    then
+      echo "::error title=Policy violation::Only the dev branch is allowed to PR to the prod branch."
+      exit 1
+    fi
+```
