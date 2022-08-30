@@ -13,3 +13,8 @@ jobs:
     steps:
       - name: Show env
         run: env | sort
+
+      - name: Verify dev PR to prod
+        if: ${{ github.base_ref == 'prod' }}
+        run: |
+          [[ "$GITHUB_HEAD_REF" == 'dev' ]] || false
