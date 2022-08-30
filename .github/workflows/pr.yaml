@@ -11,5 +11,5 @@ jobs:
 
     steps:
       - name: Show env
-        if: ${{ env.GITHUB_EVENT_NAME == "pull_request" }}
+        if: ${{ env.GITHUB_EVENT_NAME == 'pull_request' }}
         run: env | sort
