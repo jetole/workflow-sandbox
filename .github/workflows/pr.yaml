@@ -1,0 +1,20 @@
+name: Run on PR's
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  init:
+    name: PR steps
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+
+    steps:
+      - name: Show env
+        run: env | sort
+
+      - name: Verify dev PR to prod
+        if: ${{ github.base_ref == 'prod' }}
+        run: |
+          [[ "$GITHUB_HEAD_REF" == 'dev' ]] || false
