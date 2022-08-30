@@ -8,7 +8,7 @@ jobs:
   init:
     name: Init steps
     runs-on: ubuntu-latest
-    if: ${{ env.GITHUB_EVENT_NAME == "pull_request" }}
+    if: env.github_event_name == "pull_request"
 
     steps:
       - name: Show env
