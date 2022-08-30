@@ -2,7 +2,6 @@ name: Run on PR's
 
 on:
   pull_request:
-  push:
 
 jobs:
   init:
