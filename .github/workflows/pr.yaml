@@ -1,0 +1,12 @@
+name: Run on PR's
+
+on:
+  pull_request
+
+jobs:
+  init:
+    name: Init steos
+
+    steps:
+      - name: Show env
+        run: env | sort
