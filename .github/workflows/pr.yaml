@@ -2,11 +2,13 @@ name: Run on PR's
 
 on:
   pull_request
+  push
 
 jobs:
   init:
     name: Init steps
     runs-on: ubuntu-latest
+    if: ${{ env.github_event_name == "pull_request" }}
 
     steps:
       - name: Show env
