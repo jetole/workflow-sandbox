@@ -7,13 +7,13 @@ jobs:
   init:
     name: PR steps
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' }}
+    if: ${{ github.event_name == 'pull_request' }}  # Only on PR's if workflow does PR & push
 
     steps:
       - name: Show env
         run: env | sort
 
-      - name: Verify dev PR to prod
+      - name: Verify only dev branch can PR to prod branch
         if: ${{ github.base_ref == 'prod' }}
         run: |
           if [[ "$GITHUB_HEAD_REF" != 'dev' ]]
