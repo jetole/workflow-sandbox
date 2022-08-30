@@ -6,6 +6,7 @@ on:
 jobs:
   init:
     name: Init steos
+    runs-on: ubuntu-latest
 
     steps:
       - name: Show env
