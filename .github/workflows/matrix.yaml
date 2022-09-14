@@ -10,11 +10,14 @@ jobs:
     strategy:
       matrix:
         include:
-          - datacenter: ca
-          - datacenter: us
+          - pet: cat
+            name: Scratchy
+          - pet: mouse
+            name: Itchy
 
     env:
-      test_var: ${{ matrix.datacenter }}
+      pet_type: ${{ matrix.pet }}
+      pet_name: ${{ matrix.name }}
 
     steps:
       - name: Env
