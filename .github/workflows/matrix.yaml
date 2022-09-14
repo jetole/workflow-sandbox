@@ -9,15 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        include:
-          - pet: cat
-            name: Scratchy
-          - pet: mouse
-            name: Itchy
+        pet: [dog, cat, mouse, bird, fish]
 
-    env:
-      pet_type: ${{ matrix.pet }}
-      pet_name: ${{ matrix.name }}
+    # env:
+    #   pet_type: ${{ matrix.pet }}
 
     steps:
       - name: Env
@@ -26,4 +21,3 @@ jobs:
       - name: Echo
         run: |
           echo "${{ matrix.pet }}"
-          echo "${{ matrix.name }}"
