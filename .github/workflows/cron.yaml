@@ -2,7 +2,7 @@ name: Eval schedule cron
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '* * * * *'
 
 jobs:
   eval:
