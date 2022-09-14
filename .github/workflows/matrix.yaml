@@ -10,6 +10,8 @@ jobs:
     strategy:
       matrix:
         pet: [dog, cat, mouse, bird, fish, guinea pig]
+        ## ALERT: SEEMS TO DEFAULT TO LAsT DEFINED ONE IF THERE IS NO OTHER MATCH!
+        ## i.e. mouse, fish, and guinea pig all get a noise_secret of BIRD_NOISE :-O
         include:
           - dog:
             noise_secret: DOG_NOISE
@@ -61,12 +63,15 @@ jobs:
           if [[ "${pet_noise}" == "barks" ]]
           then
             echo "Ruff ruff!"
+
           elif [[ "${pet_noise}" == "purrs" ]]
           then
             echo "I should have said meow"
+
           elif [[ "${pet_noise}" == "chirps" ]]
           then
             echo "I could have also said tweeted"
+
           else
             echo '¯\_(ツ)_/¯'
           fi
