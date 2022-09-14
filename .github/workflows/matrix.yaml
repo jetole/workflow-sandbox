@@ -24,4 +24,4 @@ jobs:
 
       - name: Echo
         run: |
-          echo "${{ matrix.pet }}"
+          echo "A ${{ matrix.pet }} eats ${pet_food}."
