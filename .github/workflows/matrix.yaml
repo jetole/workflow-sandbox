@@ -11,8 +11,12 @@ jobs:
       matrix:
         pet: [dog, cat, mouse, bird, fish]
 
+    environment:
+      name: ${{ matrix.pet }}
+
     env:
       pet_type: ${{ matrix.pet }}
+      pet_food: ${{ secrets.food }}
 
     steps:
       - name: Env
