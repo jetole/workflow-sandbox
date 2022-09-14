@@ -15,6 +15,6 @@ jobs:
           - datacenter: us
             key: US key
 
-      steps:
-        - name: Env
-          run: env | sort
+    steps:
+      - name: Env
+        run: env | sort
