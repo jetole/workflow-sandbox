@@ -35,7 +35,7 @@ jobs:
           echo "A ${{ matrix.pet }} eats ${pet_food}."
           echo "A ${{ matrix.pet }} makes the sound ${pet_noise}."
 
-      - name: Test
+      - name: Test secrets based on env
         run: |
           if [[ "${pet_food}" == "kibble" ]]
           then
@@ -54,4 +54,19 @@ jobs:
             echo "They are put on hooks for fishing"
           else
             echo "I have no idea"
+          fi
+
+      - name: Test secres by include property
+        run: |
+          if [[ "${pet_noise}" == "barks" ]]
+          then
+            echo "Ruff ruff!"
+          elif [[ "${pet_noise}" == "purrs" ]]
+          then
+            echo "I should have said meow"
+          elif [[ "${pet_noise}" == "chirps" ]]
+          then
+            echo "I could have also said tweeted"
+          else
+            echo '¯\_(ツ)_/¯'
           fi
