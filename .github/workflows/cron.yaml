@@ -1,0 +1,14 @@
+name: Eval schedule cron
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  eval:
+    name: Evaluate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Shoe env
+        run: env | sort
