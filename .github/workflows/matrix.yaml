@@ -31,7 +31,9 @@ jobs:
         run: env | sort
 
       - name: Echo
-        run: echo "A ${{ matrix.pet }} eats ${pet_food}."
+        run: |
+          echo "A ${{ matrix.pet }} eats ${pet_food}."
+          echo "A ${{ matrix.pet }} makes the sound ${pet_noise}."
 
       - name: Test
         run: |
