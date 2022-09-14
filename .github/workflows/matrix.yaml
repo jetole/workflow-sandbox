@@ -10,6 +10,13 @@ jobs:
     strategy:
       matrix:
         pet: [dog, cat, mouse, bird, fish, guinea pig]
+        include:
+          - dog:
+            noise_secret: DOG_NOISE
+          - cat:
+            noise_secret: CAT_NOISE
+          - bird:
+            noise_secret: BIRD_NOISE
 
     environment:
       name: ${{ matrix.pet }}
@@ -17,7 +24,7 @@ jobs:
     env:
       pet_type: ${{ matrix.pet }}
       pet_food: ${{ secrets.food }}
-      pet_noise: ${{ secrets[matrix.pet]_NOISE }}
+      pet_noise: ${{ secrets[matrix.noise_secret] }}
 
     steps:
       - name: Env
