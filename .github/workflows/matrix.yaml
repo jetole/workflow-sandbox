@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        pet: [dog, cat, mouse, bird, fish]
+        pet: [dog, cat, mouse, bird, fish, guinea pig]
 
     environment:
       name: ${{ matrix.pet }}
