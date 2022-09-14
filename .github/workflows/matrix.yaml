@@ -11,9 +11,7 @@ jobs:
       matrix:
         include:
           - datacenter: ca
-            key: Canadian-key
           - datacenter: us
-            key: US key
 
     steps:
       - name: Env
