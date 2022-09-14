@@ -23,5 +23,25 @@ jobs:
         run: env | sort
 
       - name: Echo
+        run: echo "A ${{ matrix.pet }} eats ${pet_food}."
+
+      - name: Test
         run: |
-          echo "A ${{ matrix.pet }} eats ${pet_food}."
+          if [[ "${pet_food}" == "kibble" ]]
+          then
+            echo "AKA a compound feed with everything a doggy needs"
+          elif [[ "${pet_food}" == "mice" ]]
+          then
+            echo "The plural of mouse"
+          elif [[ "${pet_food}" == "grains" ]]
+          then
+            echo "Used to grow stuff"
+          elif [[ "${pet_food}" == "seed" ]]
+          then
+            echo "Used to plant stuff"
+          elif [[ "${pet_food}" == "worms" ]]
+          then
+            echo "They are put on hooks for fishing"
+          else
+            echo "I have no idea"
+          fi
