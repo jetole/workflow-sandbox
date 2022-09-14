@@ -56,7 +56,7 @@ jobs:
             echo "I have no idea"
           fi
 
-      - name: Test secres by include property
+      - name: Test secrets by include property
         run: |
           if [[ "${pet_noise}" == "barks" ]]
           then
