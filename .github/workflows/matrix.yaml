@@ -1,0 +1,20 @@
+name: Eval matrix
+
+on:
+  workflow_dispatch:
+
+jobs:
+  eval:
+    name: Evaluate
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - datacenter: ca
+            key: Canadian-key
+          - datacenter: us
+            key: US key
+
+      steps:
+        - name: Env
+          run: env | sort
