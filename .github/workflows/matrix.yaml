@@ -22,3 +22,8 @@ jobs:
     steps:
       - name: Env
         run: env | sort
+
+      - name: Echo
+        run: |
+          echo "${{ matrix.pet }}"
+          echo "${{ matrix.name }}"
