@@ -1,0 +1,77 @@
+name: Eval matrix
+
+on:
+  workflow_dispatch:
+
+jobs:
+  eval:
+    name: Evaluate
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pet: [dog, cat, mouse, bird, fish, guinea pig]
+        ## ALERT: SEEMS TO DEFAULT TO LAsT DEFINED ONE IF THERE IS NO OTHER MATCH!
+        ## i.e. mouse, fish, and guinea pig all get a noise_secret of BIRD_NOISE :-O
+        include:
+          - dog:
+            noise_secret: DOG_NOISE
+          - cat:
+            noise_secret: CAT_NOISE
+          - bird:
+            noise_secret: BIRD_NOISE
+
+    environment:
+      name: ${{ matrix.pet }}
+
+    env:
+      pet_type: ${{ matrix.pet }}
+      pet_food: ${{ secrets.food }}
+      pet_noise: ${{ secrets[matrix.noise_secret] }}
+
+    steps:
+      - name: Env
+        run: env | sort
+
+      - name: Echo
+        run: |
+          echo "A ${{ matrix.pet }} eats ${pet_food}."
+          echo "A ${{ matrix.pet }} makes the sound ${pet_noise}."
+
+      - name: Test secrets based on env
+        run: |
+          if [[ "${pet_food}" == "kibble" ]]
+          then
+            echo "AKA a compound feed with everything a doggy needs"
+          elif [[ "${pet_food}" == "mice" ]]
+          then
+            echo "The plural of mouse"
+          elif [[ "${pet_food}" == "grains" ]]
+          then
+            echo "Used to grow stuff"
+          elif [[ "${pet_food}" == "seed" ]]
+          then
+            echo "Used to plant stuff"
+          elif [[ "${pet_food}" == "worms" ]]
+          then
+            echo "They are put on hooks for fishing"
+          else
+            echo "I have no idea"
+          fi
+
+      - name: Test secrets by include property
+        run: |
+          if [[ "${pet_noise}" == "barks" ]]
+          then
+            echo "Ruff ruff!"
+
+          elif [[ "${pet_noise}" == "purrs" ]]
+          then
+            echo "I should have said meow"
+
+          elif [[ "${pet_noise}" == "chirps" ]]
+          then
+            echo "I could have also said tweeted"
+
+          else
+            echo '¯\_(ツ)_/¯'
+          fi
